@@ -12,10 +12,10 @@ Content-Type: application/json
 ### Get Current user's info
 
 GET http://localhost:3000/api/users/me HTTP/1.1
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc0YTdlZGQzYTRiYTZjMzAyMTQwYWYiLCJiaXoiOnRydWUsImlhdCI6MTYwMTQ4MDgyN30.sra_844L7AounRjlnqKANcCJGVL5iqx5sUZkx94W4Os
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMWI4ODEwYTg5NjVmNTYyNzMzMTkiLCJiaXoiOnRydWUsImlhdCI6MTYwMjQyNzc5M30.TpUdLg3mL-zVPJt9fE8C4TZ3SQLWdhbknpI1qKQUWPc
 
 ### Get user's token
-### a@a.com eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc0YTdlZGQzYTRiYTZjMzAyMTQwYWYiLCJiaXoiOnRydWUsImlhdCI6MTYwMTQ4MDgyN30.sra_844L7AounRjlnqKANcCJGVL5iqx5sUZkx94W4Os
+### a@a.com eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMWI4ODEwYTg5NjVmNTYyNzMzMTkiLCJiaXoiOnRydWUsImlhdCI6MTYwMjQyNzc5M30.TpUdLg3mL-zVPJt9fE8C4TZ3SQLWdhbknpI1qKQUWPc
 POST http://localhost:3000/api/auth HTTP/1.1
 Content-Type: application/json
 
@@ -27,7 +27,7 @@ Content-Type: application/json
 ### Create card
 POST http://localhost:3000/api/cards HTTP/1.1
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc0YTdlZGQzYTRiYTZjMzAyMTQwYWYiLCJiaXoiOnRydWUsImlhdCI6MTYwMTQ4MDgyN30.sra_844L7AounRjlnqKANcCJGVL5iqx5sUZkx94W4Os
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMWI4ODEwYTg5NjVmNTYyNzMzMTkiLCJiaXoiOnRydWUsImlhdCI6MTYwMjQyNzc5M30.TpUdLg3mL-zVPJt9fE8C4TZ3SQLWdhbknpI1qKQUWPc
 
 {
     "bizName":"Limonade 1",
@@ -36,5 +36,36 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc0YTdlZGQzYTRiY
     "bizPhone":"026666667"
 }
 
+### Update card
+PUT http://localhost:3000/api/cards/5f831bad10a8965f5627331a HTTP/1.1
+Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMWI4ODEwYTg5NjVmNTYyNzMzMTkiLCJiaXoiOnRydWUsImlhdCI6MTYwMjQyNzc5M30.TpUdLg3mL-zVPJt9fE8C4TZ3SQLWdhbknpI1qKQUWPc
+
+{
+    "bizName":"Lime 1",
+    "bizDescription":"Fresh Lime Coming Your Way Sir",
+    "bizAddress":"Limonade avn.",
+    "bizPhone":"027777777"
+}
+
+
 ### Get Card
-GET http://localhost:3000/api/cards/somecardid HTTP/1.1
+GET http://localhost:3000/api/cards/5f831bad10a8965f5627331a HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMWI4ODEwYTg5NjVmNTYyNzMzMTkiLCJiaXoiOnRydWUsImlhdCI6MTYwMjQyNzc5M30.TpUdLg3mL-zVPJt9fE8C4TZ3SQLWdhbknpI1qKQUWPc
+
+### Delete card
+DELETE http://localhost:3000/api/cards/5f832d2f15f1866d8636420c HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzMmNmNzE1ZjE4NjZkODYzNjQyMGIiLCJiaXoiOnRydWUsImlhdCI6MTYwMjQzMjI1Nn0.YY9xqTmcV6WlVOoLgrd8jARKvHh37rrG49vaR-_6DFA
+
+### favorite a card
+PATCH http://localhost:3000/api/users/cards HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzM2MxNzIzNzFlZDdiZTJmOTUyMGYiLCJiaXoiOmZhbHNlLCJpYXQiOjE2MDI0MzYxMzZ9.V868g4NOHGhldnYyZ1OqbEf5gquYC5MVuiPE_fmPxjI
+Content-Type: application/json
+
+{
+    "cards": [7838870,2415418]
+}
+
+### get cards
+GET  http://localhost:3000/api/users/cards?numbers=4088400,6843970 HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjgzM2MxNzIzNzFlZDdiZTJmOTUyMGYiLCJiaXoiOmZhbHNlLCJpYXQiOjE2MDI0MzYxMzZ9.V868g4NOHGhldnYyZ1OqbEf5gquYC5MVuiPE_fmPxjI

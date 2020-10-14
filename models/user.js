@@ -28,6 +28,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   createdAt: { type: Date, default: Date.now },
+  cards: Array,
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -50,5 +51,16 @@ function validateUser(user) {
   return schema.validate(user);
 }
 
-exports.User = User;
-exports.validate = validateUser;
+function validateCards(data) {
+  const schema = Joi.object({
+    cards: Joi.array().min(1).required(),
+  });
+
+  return schema.validate(data);
+}
+
+module.exports = {
+  User,
+  validate: validateUser,
+  validateCards,
+};
